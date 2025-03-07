@@ -6,7 +6,7 @@ import os
 current_dir = os.getcwd()
 
 csv_file_path = os.path.join(current_dir, "customers-100.csv")
-csv_output_path = os.path.join(current_dir, "transformed_data.csv")
+csv_output_path = os.path.join(current_dir, "Output/transformed_data.csv")
 
 # 1. Load CSV to DataFrame
 data = pd.read_csv(csv_file_path)
