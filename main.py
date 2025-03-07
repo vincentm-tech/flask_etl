@@ -1,9 +1,15 @@
 import pandas as pd
 import requests  # Import the requests library
 import json
+import os
+
+current_dir = os.getcwd()
+
+csv_file_path = os.path.join(current_dir, "customers-100.csv")
+csv_output_path = os.path.join(current_dir, "transformed_data.csv")
 
 # 1. Load CSV to DataFrame
-data = pd.read_csv("C:/Users/Harvey/Downloads/demo/customers-100.csv")
+data = pd.read_csv(csv_file_path)
 
 # 2. Convert DataFrame to JSON (list of records)
 json_data = data.to_dict(orient='records')
@@ -12,7 +18,7 @@ json_data = data.to_dict(orient='records')
 headers = {'Content-Type': 'application/json'}
 
 # 4. Vercel URL for the external API, this was mine but it depends on your vercel deployment URL
-url = "https://test-repo-umber-beta.vercel.app/transform_data"
+url = "https://flask-etl-vincentm-techs-projects.vercel.app/transform_data"
 
 
 # 5. Make the API call
@@ -28,7 +34,7 @@ try:
         transformed_df = pd.DataFrame(transformed_data)
 
         #9. Save the DataFrame to a local CSV file
-        transformed_df.to_csv("C:/Users/Harvey/Downloads/demo/transformed_data.csv", index=False)  # index=False avoids saving the DataFrame index to the CSV
+        transformed_df.to_csv(csv_output_path, index=False)  # index=False avoids saving the DataFrame index to the CSV
         print("Transformed data saved to transformed_data.csv")
 
 
