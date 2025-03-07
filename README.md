@@ -1,28 +1,77 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fflask3&demo-title=Flask%203%20%2B%20Vercel&demo-description=Use%20Flask%203%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fflask3-python-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994156/random/flask.png)
+# Flask ETL API
 
-# Flask + Vercel
+## Overview
+This project demonstrates an **Extract, Transform, Load (ETL) process** using Flask and Serverless Functions on Vercel. The application reads a CSV file from a local device, sends the data to a Flask API for transformation, and saves the transformed data back to a local file.
 
-This example shows how to use Flask 3 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## How It Works
+This project utilizes **WSGI with Flask** to handle HTTP requests and process data using **Serverless Functions on Vercel**.
 
-## Demo
+### **Usage Workflow**
+1. **Extract**: Python script loads a CSV file from the local device.
+2. **Transform**: The script makes an API call to process the data using the deployed Flask application.
+3. **Load**: The transformed CSV is downloaded and saved locally.
 
-https://flask-python-template.vercel.app/
+---
 
-## How it Works
+## **Deployment Workflow**
 
-This example uses the Web Server Gateway Interface (WSGI) with Flask to enable handling requests on Vercel with Serverless Functions.
-
-## Running Locally
-
-```bash
-npm i -g vercel
-vercel dev
+### 1️⃣ Create a Project Directory & Clone the Repository
+#### **PowerShell**:
+```powershell
+mkdir flask-data-api
 ```
 
-Your Flask application is now available at `http://localhost:3000`.
+#### **Bash**:
+```bash
+mkdir flask-data-api
+cd flask-data-api
+git clone <your-github-repo-url>
+```
 
-## One-Click Deploy
+### 2️⃣ Activate Virtual Environment & Install Dependencies
+#### **Windows**:
+```powershell
+cd flask-data-api
+cd api
+python -m venv env
+./env/Scripts/Activate
+pip install -r ../requirements.txt
+```
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+#### **Mac/Linux**:
+```bash
+cd flask-data-api
+cd api
+python -m venv env
+source env/bin/activate
+pip install -r ../requirements.txt
+```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fflask3&demo-title=Flask%203%20%2B%20Vercel&demo-description=Use%20Flask%203%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fflask3-python-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994156/random/flask.png)
+### 3️⃣ Upload the Code to GitHub
+```bash
+git remote set-url origin <your-github-repo-url>
+git add .
+git commit -m "initial commit"
+git push -u origin main
+```
+
+---
+
+### 4️⃣ Create a Vercel Account
+1. Go to [Vercel's website](https://vercel.com/) and click **"Sign Up"**.
+2. Sign up using **GitHub**, **GitLab**, or **Bitbucket**.
+3. Once signed in, click **"New Project"** to create a deployment.
+
+---
+
+## **Next Steps & Enhancements**
+- Implement **API authentication** to secure endpoints.
+- Store transformed data in a **database** instead of CSV.
+- Add **error handling** to improve reliability.
+- Use **Docker** for easier deployment.
+
+---
+
+### **License**
+This project is open-source and available under the MIT License.
+
