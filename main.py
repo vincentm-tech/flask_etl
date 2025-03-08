@@ -6,7 +6,13 @@ import os
 current_dir = os.getcwd()
 
 csv_file_path = os.path.join(current_dir, "customers-100.csv")
-csv_output_path = os.path.join(current_dir, "Output/transformed_data.csv")
+
+# Determine if running inside Docker
+if os.path.exists("/app"):
+    csv_output_path = "/app/output/transformed_data.csv"  # Docker path
+else:
+    csv_output_path = os.path.join(current_dir, "Output/transformed_data.csv") # Local path
+
 
 # 1. Load CSV to DataFrame
 data = pd.read_csv(csv_file_path)
@@ -35,6 +41,8 @@ try:
 
         #9. Save the DataFrame to a local CSV file
         transformed_df.to_csv(csv_output_path, index=False)  # index=False avoids saving the DataFrame index to the CSV
+        #transformed_df.to_csv("/app/output/transformed_data.csv", index=False)
+
         print("Transformed data saved to transformed_data.csv")
 
 
